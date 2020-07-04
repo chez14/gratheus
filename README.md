@@ -1,14 +1,12 @@
 # Gratheus: Grafana + Prometheus Combo
-This is a basic template (that I use) for your daily monitoring things.
+This is a basic template (that I use) for monitoring things.
 
 In this package:
-- Grafana, for beautiful dashboard
-- Prometheus, for the exporters
+- Grafana
+- Prometheus
+- Blackbox Exporter for Prometheus
+- Persistent data for both Grafana and Prometheus
 
-You run this on docker by simple run this sacred script:
-```shell
-$ docker-compose up
-```
 
 ## But before that,
 You'll have to fine tune the installation before it went to production. Things such as user and presistent
