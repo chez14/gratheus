@@ -1,5 +1,5 @@
-# Monitoring Dashboard
-This is a basic template for your daily monitoring things.
+# Gratheus: Grafana + Prometheus Combo
+This is a basic template (that I use) for your daily monitoring things.
 
 In this package:
 - Grafana, for beautiful dashboard
@@ -21,7 +21,7 @@ So in a nushell here's what you need to do:
     $ mkdir .data
     ```
 
-- Change the settings user on the `docker-compose.yml` file.
+- Change the settings & run user on the `docker-compose.yml` file.
 
 - chown && chmod, if you need.
     ```shell
