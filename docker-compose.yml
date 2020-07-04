@@ -7,16 +7,42 @@ services:
       - prometheus
     volumes:
       - ./.data/grafana:/var/lib/grafana
+      - ./grafana-provisioning-datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
     ports:
       - '80:3000'
     # DON'T FORGET TO UPDATE THIS
     user: "1001:1001"
+    environment:
+      GF_SERVER_DOMAIN: monitor.domain.tld
+      GF_INSTANCE_NAME: "yotaro rindo"
+
+      GF_SECURITY_ADMIN_USER: monitoring
+      GF_SECURITY_ADMIN_PASSWORD: securePassword
+
+      GF_USERS_ALLOW_SIGN_UP: "false"
+
+      GF_SMTP_ENABLED: "true"
+      GF_SMTP_FROM_ADDRESS: 
+      GF_SMTP_FROM_NAME: 
+      GF_SMTP_HOST: 
+      GF_SMTP_PASSWORD: 
+      GF_SMTP_USER: 
     
   prometheus:
     image: prom/prometheus:latest
+    links:
+      - blackbox_exporter
     volumes:
       - ./.data/prometheus:/prometheus
+      - ./config-prometheus:/etc/prometheus
     ports:
       - '9090:9090'
     # DON'T FORGET TO UPDATE THIS
     user: "1001:1001"
+
+
+  # Misclenaus Exporters
+  blackbox_exporter:
+    image: prom/blackbox-exporter:latest
+    volumes:
+      - ./config-blackbox:/config
