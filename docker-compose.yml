@@ -9,6 +9,8 @@ services:
       - ./.data/grafana:/var/lib/grafana
     ports:
       - '80:3000'
+    # DON'T FORGET TO UPDATE THIS
+    user: "1001:1001"
     
   prometheus:
     image: prom/prometheus:latest
@@ -16,3 +18,5 @@ services:
       - ./.data/prometheus:/prometheus
     ports:
       - '9090:9090'
+    # DON'T FORGET TO UPDATE THIS
+    user: "1001:1001"
