@@ -11,10 +11,10 @@ In this package:
 
 
 ## But before that,
-You'll have to fine tune the installation before it went to production. Things such as user and presistent
-storage stuff that need to be taken care of before spinning up the server is quite.... important.
+You'll have to fine-tune the installation before it went to production. Things such as user and persistent
+storage stuff that need to be taken care of before spinning up the server are quite.... important.
 
-So in a nushell here's what you need to do:
+So in a nutshell here's what you need to do:
 
 - Create data folder for storage:
     ```shell
@@ -27,9 +27,9 @@ So in a nushell here's what you need to do:
     ```shell
     $ chown -R 1001:1001 .data
     ```
-- Then you can `docker-compose up` the nuclear faciltiy.
+- Then you can `docker-compose up` the nuclear facility.
 
-- After that, you can login to the grafana:
+- After that, you can log in to the grafana:
   - URL: http://localhost
   - Username: `monitoring` (UNLESS you changed the setting on `docker-compose.yml`!)
   - Password: `securePassword` (UNLESS you changed the setting on `docker-compose.yml`!)
