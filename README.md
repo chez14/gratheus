@@ -5,7 +5,9 @@ In this package:
 - Grafana
 - Prometheus
 - Blackbox Exporter for Prometheus
+- Image Renderer for Grafana (not active by default)
 - Persistent data for both Grafana and Prometheus
+- Docker `restart: unless-stopped` policy.
 
 
 ## But before that,

@@ -3,8 +3,10 @@ version: '3'
 services:
   grafana:
     image: grafana/grafana:latest
+    restart: unless-stopped
     links:
       - prometheus
+      # - grafana_renderer
     volumes:
       - ./.data/grafana:/var/lib/grafana
       - ./grafana-provisioning-datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
@@ -26,10 +28,19 @@ services:
       GF_SMTP_FROM_NAME: 
       GF_SMTP_HOST: 
       GF_SMTP_PASSWORD: 
-      GF_SMTP_USER: 
+      GF_SMTP_USER:
+
+      # GF_RENDERING_SERVER_URL: http://grafana_renderer:8081/render
+      # GF_RENDERING_CALLBACK_URL: http://grafana:3000/
+      # GF_LOG_FILTERS: rendering:debug
+    
+  # grafana_renderer:
+  #   image: grafana/grafana-image-renderer:latest
+  #   restart: unless-stopped
     
   prometheus:
     image: prom/prometheus:latest
+    restart: unless-stopped
     links:
       - blackbox_exporter
     volumes:
@@ -44,5 +55,6 @@ services:
   # Misclenaus Exporters
   blackbox_exporter:
     image: prom/blackbox-exporter:latest
+    restart: unless-stopped
     volumes:
       - ./config-blackbox:/config
